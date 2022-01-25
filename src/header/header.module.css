@@ -1,0 +1,32 @@
+.body{
+    position: relative;
+    height: 80px;
+    width: 100vw;
+}
+.navbar{
+    top: calc(50% - 20px/2 - 16px);
+    display: flex;
+    position: absolute;
+    width: 350px;
+    height: 56px;
+    left: 101px;
+    bottom: 0;
+
+}
+.button, .activeButton{
+    text-decoration: none;
+    outline: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 120%;
+    padding: 0 14px;
+
+}
+.button{
+    color: #1D1F22;
+}
+.activeButton{
+    padding: 0 14px;
+    color: #5ECE7B;
+    border-bottom: #5ECE7B solid 2px;
+}
