@@ -1,14 +1,18 @@
-import React, {useEffect} from "react"
+import React, {PureComponent} from "react"
 import Category from "./category/category"
 import {connect} from "react-redux"
-import {getProducts} from "../../state/allCategoriesReducer";
+import {getProducts} from "../../state/allCategoriesReducer"
 
-const AllCategoriesContainer = (props) => {
-    useEffect(() => {
-        props.getProducts()
-    })
-    return <Category {...props}/>
+class AllCategoriesContainer extends PureComponent {
+    componentDidMount() {
+        this.props.getProducts()
+    }
+
+    render() {
+        return <Category {...this.props}/>
+    }
 }
+
 const mapStateToProps = (state) => ({
     name: state.allCategoriesPage.name,
     products: state.allCategoriesPage.products

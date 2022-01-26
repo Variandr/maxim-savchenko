@@ -35,10 +35,11 @@
     color: #1D1F22;
 }
 .cart{
-    margin: 8px;
-    width: 40px;
+    margin: 15px;
+    width: 30px;
 }
 .btnAdd{
+    color: white;
     display: none;
     cursor: pointer;
     position: relative;

@@ -4,3 +4,8 @@
     left: 0;
     top: 0;
 }
+.error {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
