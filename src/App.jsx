@@ -1,31 +1,21 @@
 import React, {PureComponent} from "react"
 import './App.css'
-import {Route, Routes} from "react-router-dom"
-import Header from "./header/header"
-import TechContainer from "./content/categories/techContainer"
-import ClothesContainer from "./content/categories/clothesContainer"
-import AllCategoriesContainer from "./content/categories/allCategoriesContainer"
+import {Route, Routes, Navigate} from "react-router-dom"
+import CategoriesContainer from "./content/categories/categoriesContainer"
 import ProductContainer from "./content/PDP/productContainer"
+import BagPageContainer from "./content/bagPage/bagPageContainer"
+import HeaderContainer from "./header/headerContainer"
 
-const Categories = () => {
-    return <div>
-        <Routes>
-            <Route path='all' element={<AllCategoriesContainer/>}/>
-            <Route path='clothes' element={<ClothesContainer/>}/>
-            <Route path='tech' element={<TechContainer/>}/>
-        </Routes>
-    </div>
-}
 
 class App extends PureComponent {
-    componentDidMount() {
-    }
     render() {
         return <div className="app">
-            <Header/>
+            <HeaderContainer/>
             <Routes>
-                <Route path='categories/*' element={<Categories/>}/>
+                <Route path='/' element={<Navigate to="/categories/all"/>}/>
+                <Route path='categories/:categoryId' element={<CategoriesContainer/>}/>
                 <Route path='product/:productId' element={<ProductContainer/>}/>
+                <Route path='/basket' element={<BagPageContainer/>} />
                 <Route path='*' element={<div className='error'><h1>404 Page not found</h1></div>}/>
             </Routes>
         </div>

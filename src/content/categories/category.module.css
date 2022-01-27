@@ -57,3 +57,7 @@
     line-height: 160%;
     margin: 20px 0 0 100px;
 }
+.navLink{
+    text-decoration: none;
+    /*cursor: auto;*/
+}

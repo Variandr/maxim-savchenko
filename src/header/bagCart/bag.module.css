@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
+
+.bag {
+    background: white;
+    position: absolute;
+    top: calc(100% - 20px / 2 - 16px);
+    right: 5vw;
+    width: 325px;
+    z-index: 2;
+}
+
+.bagHeader {
+    font-size: 16px;
+    margin: 0 20px;
+}
+
+.viewBagBtn {
+    color: #1D1F22;
+    border: 1px solid #1D1F22;
+    box-sizing: border-box;
+}
+
+.viewBagBtn, .checkOutBtn {
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 43px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+}
+
+.bagButtons{
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+}
+.checkOutBtn {
+    color: #FFFFFF;
+    background: #5ECE7B;
+}
+
+.bagItemImg {
+    width: 105px;
+    height: 137px;
+}
+
+.bagItemImgBox {
+    margin-left: 180px;
+    margin-top: -45px;
+}
+
+.bagItemName, .bagItemBrand {
+    font-family: 'Raleway', sans-serif;
+    color: #1D1F22;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 160%;
+}
+
+.bagItem {
+    margin: 20px;
+    height: 150px;
+}
+.counter{
+    position: absolute;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 90%;
+    text-align: center;
+    border: 2px solid #1D1F22;
+    box-sizing: border-box;
+}
+.counterPlus{
+    margin: -140px 0 0 150px;
+}
+.counterMinus{
+    margin: -46px 0 0 150px;
+}
+.countNum{
+    position: absolute;
+    margin: -85px 0 0 157px;
+    color: #1D1F22;
+    font-weight: 600;
+    font-size: 16px;
+}
+.navLink{
+    text-decoration: none;
+}

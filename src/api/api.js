@@ -10,14 +10,33 @@ export const categoriesAPI = {
         return client.query({
             query: gql`
         query Query($input: CategoryInput) {
-            category(input: $input) {
+          category(input: $input) {
+            name
+            products {
+              id
+              name
+              inStock
+              gallery
+              attributes {
+                id
                 name
-                products {
-                    id
-                    name
-                    gallery
+                type
+                items {
+                  displayValue
+                  value
+                  id
                 }
+              }
+              prices {
+                currency {
+                  label
+                  symbol
+                }
+                amount
+              }
+              brand
             }
+          }
         }`,
             variables: {
                 "input": {
@@ -59,6 +78,9 @@ export const categoriesAPI = {
             variables: {
                 "productId": productId
             }
-        }).then(res => res.data.product)
+        }).then(res => {
+            client.clearStore()
+            return res.data.product
+        })
     }
 }

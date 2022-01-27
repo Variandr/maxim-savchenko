@@ -4,12 +4,12 @@ import {getProductData} from "../../state/productReducer"
 import Product from "./product"
 import {compose} from "redux"
 import withRouter from "../../HOC/withRouter"
+import {addProduct} from "../../state/bagReducer"
 
 class ProductContainer extends PureComponent {
     componentDidMount() {
-        let productId = this.props.params.productId
-        this.props.getProductData(productId)
-        if (!productId) {
+        this.props.getProductData(this.props.params.productId)
+        if (!this.props.params.productId) {
             this.props.history.push('*')
         }
     }
@@ -25,7 +25,7 @@ class ProductContainer extends PureComponent {
             return <></>
         }
         return <>
-            <Product product={this.props.product}/>
+            <Product product={this.props.product} addProduct={this.props.addProduct}/>
         </>
     }
 }
@@ -33,4 +33,4 @@ class ProductContainer extends PureComponent {
 const mapStateToProps = (state) => ({
     product: state.productPage.product
 })
-export default compose(connect(mapStateToProps, {getProductData}), withRouter)(ProductContainer)
+export default compose(connect(mapStateToProps, {getProductData, addProduct}), withRouter)(ProductContainer)

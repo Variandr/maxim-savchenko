@@ -1,12 +1,12 @@
 import {categoriesAPI} from "../api/api"
 
-const SET_CATEGORY = '/all/SET_CATEGORY'
+const SET_CATEGORY = '/categories/SET_CATEGORY'
 let initialState = {
     name: null,
     products: []
 }
 
-let AllCategoriesReducer = (state = initialState, action) => {
+let CategoriesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CATEGORY:
             return {...state, name: action.name, products: action.products}
@@ -14,11 +14,11 @@ let AllCategoriesReducer = (state = initialState, action) => {
             return state
     }
 }
-export default AllCategoriesReducer
+export default CategoriesReducer
 const _setCategory = (name, products) => ({
     type: SET_CATEGORY, name, products
 })
-export const getProducts = () => async (dispatch) => {
-    let category = await categoriesAPI.getCategory("all")
+export const getProducts = (categoryId) => async (dispatch) => {
+    let category = await categoriesAPI.getCategory(categoryId)
     dispatch(_setCategory(category.name, category.products))
 }

@@ -7,17 +7,18 @@ let initialState = {
 let BagReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_PRODUCT:
-            return {...state, products: action.product}
+            return {...state, products: [...state.products, action.payload]}
         case DELETE_PRODUCT:
-            return {...state, products: state.products.filter(p => p.name !== action.name)}
+            return {...state, products: state.products.filter(p => p.id !== action.id)}
         default:
             return state
     }
 }
 export default BagReducer
-export const addProduct = (product) => ({
-    type: ADD_PRODUCT, product
+export const addProduct = (id, name, brand, photo, attributes) => ({
+    type: ADD_PRODUCT, payload:{id, name, brand, photo, attributes}
 })
-export const deleteProduct = (name) => ({
-    type: DELETE_PRODUCT, name
+
+export const deleteProduct = (id) => ({
+    type: DELETE_PRODUCT, id
 })
