@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+.bagContainer{
+    border-top: #E5E5E5 1px solid;
+    padding: 20px 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 400px;
+    left: -200px;
+}
+.cart{
+    font-family: Raleway, sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+}
+.cartName{
+    margin: 20px 0;
+    font-family: Raleway, sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+}
+.cartBrand{
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 27px;
+}
+.cartImg{
+    width: 160px;
+}
+.counter{
+    position: absolute;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 90%;
+    text-align: center;
+    border: 2px solid #1D1F22;
+    box-sizing: border-box;
+}
+.counterPlus{
+    margin: 0 0 0 -50px;
+}
+.counterMinus{
+    margin: 140px 0 0 -50px;
+}
+.countNum{
+    font-family: Raleway, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 160%;
+    position: absolute;
+    margin: 75px 0 0 -37px;
+}
+.cartPrice{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 18px;
+    margin: 20px 0;
+}

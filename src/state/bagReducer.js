@@ -15,8 +15,8 @@ let BagReducer = (state = initialState, action) => {
     }
 }
 export default BagReducer
-export const addProduct = (id, name, brand, photo, attributes) => ({
-    type: ADD_PRODUCT, payload:{id, name, brand, photo, attributes}
+export const addProduct = (id, name, brand, photo, attributes, prices) => ({
+    type: ADD_PRODUCT, payload:{id, name, brand, photo, attributes, prices}
 })
 
 export const deleteProduct = (id) => ({

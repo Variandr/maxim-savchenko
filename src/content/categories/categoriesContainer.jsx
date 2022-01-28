@@ -22,13 +22,17 @@ class CategoriesContainer extends PureComponent {
     }
 
     render() {
-
-        return <Category {...this.props}/>
+        return <Category products={this.props.products}
+                         name={this.props.name}
+                         addProduct={this.props.addProduct}
+                         activeCurrency={this.props.activeCurrency}
+        />
     }
 }
 
 const mapStateToProps = (state) => ({
     name: state.categoriesPage.name,
-    products: state.categoriesPage.products
+    products: state.categoriesPage.products,
+    activeCurrency: state.app.activeCurrency
 })
 export default compose(connect(mapStateToProps, {getProducts, addProduct}), withRouter)(CategoriesContainer)

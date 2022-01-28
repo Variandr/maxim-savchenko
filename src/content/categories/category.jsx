@@ -4,7 +4,7 @@ import s from './category.module.css'
 
 const Category = (props) => {
     let productsItems = props.products.map(p => {
-        return <ProductItem addProduct={props.addProduct} id={p.id} key={p.id} name={p.name} photo={p.gallery[0]} brand={p.brand} attributes={p.attributes}/>
+        return <ProductItem addProduct={props.addProduct} id={p.id} key={p.id} name={p.name} photo={p.gallery[0]} brand={p.brand} prices={p.prices} attributes={p.attributes} activeCurrency={props.activeCurrency}/>
     })
     return <div className={s.body}>
         <div className={s.categoryName}>{props.name}</div>

@@ -9,42 +9,41 @@ export const categoriesAPI = {
     getCategory(category) {
         return client.query({
             query: gql`
-        query Query($input: CategoryInput) {
-          category(input: $input) {
-            name
-            products {
-              id
-              name
-              inStock
-              gallery
-              attributes {
-                id
-                name
-                type
-                items {
-                  displayValue
-                  value
-                  id
-                }
-              }
-              prices {
-                currency {
-                  label
-                  symbol
-                }
-                amount
-              }
-              brand
-            }
-          }
-        }`,
+                query Query($input: CategoryInput) {
+                  category(input: $input) {
+                    name
+                    products {
+                      id
+                      brand
+                      name
+                      inStock
+                      gallery
+                      attributes {
+                        type
+                        items {
+                          id
+                          value
+                        }
+                      }
+                      prices {
+                        currency {
+                          label
+                          symbol
+                        }
+                        amount
+                      }
+                    }
+                  }
+                }`,
             variables: {
                 "input": {
                     "title": category
                 }
             }
         }).then(res => res.data.category)
-    },
+    }
+}
+export const productsAPI = {
     getProduct(productId) {
         return client.query({
             query: gql`
@@ -82,5 +81,18 @@ export const categoriesAPI = {
             client.clearStore()
             return res.data.product
         })
+    }
+}
+export const currenciesAPI = {
+    getCurrencies() {
+        return client.query({
+            query: gql`
+               query Query {
+                  currencies {
+                    label
+                    symbol
+                  }
+               }`
+        }).then(res => res.data.currencies)
     }
 }

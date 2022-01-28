@@ -1,4 +1,4 @@
-import {categoriesAPI} from "../api/api"
+import {productsAPI} from "../api/api"
 
 const SET_PRODUCT = '/product/SET_PRODUCT'
 let initialState = {
@@ -18,6 +18,6 @@ const _setProduct = (product) => ({
     type: SET_PRODUCT, product
 })
 export const getProductData = (id) => async (dispatch) => {
-    let product = await categoriesAPI.getProduct(id)
+    let product = await productsAPI.getProduct(id)
     dispatch(_setProduct(product))
 }

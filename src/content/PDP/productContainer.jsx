@@ -21,16 +21,20 @@ class ProductContainer extends PureComponent {
     }
 
     render() {
-        if(!this.props.product){
+        if (!this.props.product) {
             return <></>
         }
         return <>
-            <Product product={this.props.product} addProduct={this.props.addProduct}/>
+            <Product product={this.props.product}
+                     addProduct={this.props.addProduct}
+                     activeCurrency={this.props.activeCurrency}
+            />
         </>
     }
 }
 
 const mapStateToProps = (state) => ({
-    product: state.productPage.product
+    product: state.productPage.product,
+    activeCurrency: state.app.activeCurrency
 })
 export default compose(connect(mapStateToProps, {getProductData, addProduct}), withRouter)(ProductContainer)

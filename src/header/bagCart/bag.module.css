@@ -5,7 +5,7 @@
     position: absolute;
     top: calc(100% - 20px / 2 - 16px);
     right: 5vw;
-    width: 325px;
+    width: 350px;
     z-index: 2;
 }
 
@@ -34,11 +34,12 @@
     line-height: 120%;
 }
 
-.bagButtons{
+.bagButtons {
     display: flex;
     margin: 20px;
     justify-content: space-between;
 }
+
 .checkOutBtn {
     color: #FFFFFF;
     background: #5ECE7B;
@@ -50,8 +51,8 @@
 }
 
 .bagItemImgBox {
-    margin-left: 180px;
-    margin-top: -45px;
+    margin-left: 200px;
+    margin-top: -100px;
 }
 
 .bagItemName, .bagItemBrand {
@@ -66,7 +67,8 @@
     margin: 20px;
     height: 150px;
 }
-.counter{
+
+.counter {
     position: absolute;
     cursor: pointer;
     width: 24px;
@@ -78,19 +80,49 @@
     border: 2px solid #1D1F22;
     box-sizing: border-box;
 }
-.counterPlus{
-    margin: -140px 0 0 150px;
+
+.counterPlus {
+    margin: -130px 0 0 170px;
 }
-.counterMinus{
-    margin: -46px 0 0 150px;
+
+.counterMinus {
+    margin: -46px 0 0 170px;
 }
-.countNum{
+
+.countNum {
     position: absolute;
-    margin: -85px 0 0 157px;
+    margin: -85px 0 0 177px;
     color: #1D1F22;
     font-weight: 600;
     font-size: 16px;
 }
-.navLink{
+
+.navLink {
     text-decoration: none;
+}
+
+.bagItemPrice {
+    margin: 10px 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 160%;
+}
+.totalName{
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+}
+.totalPrice{
+    margin: -5px 0 0 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 160%;
+}
+.totalContainer{
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
 }

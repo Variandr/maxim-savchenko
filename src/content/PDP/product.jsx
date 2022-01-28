@@ -1,39 +1,33 @@
 import React, {PureComponent} from "react"
 import s from './product.module.css'
-import Attribute from "./attribute"
+import Attributes from "./attribute"
 
 class Product extends PureComponent {
     state = {
         productMainImg: null,
-        attributes: []
+        attributes: null
     }
     setImage = (image) => {
         this.setState({
             productMainImg: image
         })
     }
-    setAttributes = (attribute, id) => {
-        if (!this.state.attributes.length) {
-            this.setState({
-                attributes: [...this.state.attributes, {id, attribute}]
-            })
-        } else {
+    setAttributes = (value, id, type) => {
             let isFoundById = false;
             this.setState({
                 attributes: this.state.attributes.map(a => {
                     if (a.id === id) {
                         isFoundById = true;
-                        return {id, attribute}
+                        return {id, value, type}
                     }
                     return a
                 })
             })
             if (!isFoundById) {
                 this.setState({
-                    attributes: [...this.state.attributes, {id, attribute}]
+                    attributes: [...this.state.attributes, {id, value, type}]
                 })
             }
-        }
     }
 
     componentDidMount() {
@@ -43,20 +37,34 @@ class Product extends PureComponent {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.product !== prevProps.product) {
             this.setImage(this.props.product.gallery[0])
+            this.setState({
+                attributes: null
+            })
+        }
+        if (!this.state.attributes) {
+            let tempArr = []
+            this.props.product.attributes.map(a => {
+                a.items.forEach((i, index) => {
+                    if (index === 0) tempArr = [...tempArr, {id: a.id, value: i.value, type: a.type}]
+                })
+            })
+            this.setState({
+                attributes: tempArr
+            })
         }
     }
 
     render() {
-        let {product, addProduct} = this.props
-        // console.log(product)
+        let {product, addProduct, activeCurrency} = this.props
+        let price = product.prices.filter(p => p.currency.symbol === activeCurrency)
         let gallery = product.gallery.map((p, i) => {
             return <div key={i} className={s.productImgBtn} onClick={() => this.setImage(p)}>
                 <img className={s.productImg} src={p} alt={product.name}/>
             </div>
         })
-        let attributes = product.attributes.map(a => {
-            return <Attribute id={a.id} key={a.id} name={a.name} items={a.items} type={a.type}
-                              setAttributes={this.setAttributes}/>
+        let attributes = product.attributes.map((a, index) => {
+            return <Attributes index={index} id={a.id} key={a.id} name={a.name} items={a.items} type={a.type}
+                              setAttributes={this.setAttributes} attributes={this.state.attributes}/>
         })
         return <div className={s.body}>
             <div>{gallery}</div>
@@ -66,8 +74,10 @@ class Product extends PureComponent {
                 <div className={s.productName}>{product.name}</div>
                 <div className={s.productBrand}>{product.brand}</div>
                 <div className={s.productAttributes}>{attributes}</div>
+                <div className={s.attributeName}>Price:</div>
+                <div className={s.price}>{activeCurrency}{price[0].amount}</div>
                 <div className={s.addToCartBtn}
-                     onClick={() => addProduct(product.id, product.name, product.brand, product.gallery[0], this.state.attributes)}>Add
+                     onClick={() => addProduct(product.id, product.name, product.brand, product.gallery[0], this.state.attributes, product.prices)}>Add
                     to cart
                 </div>
                 <div className={s.productDescription} dangerouslySetInnerHTML={{__html: product.description}}>{}</div>
