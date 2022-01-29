@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/maxim-savchenko/static/css/main.215de588.css",
+    "main.js": "/maxim-savchenko/static/js/main.c76e2d40.js",
+    "static/media/logo.svg": "/maxim-savchenko/static/media/logo.19d5e15f649d0080d15bcb19a7111c85.svg",
+    "static/media/cartBox.svg": "/maxim-savchenko/static/media/cartBox.0ce3a0697047a0255ffa862f98c907ba.svg",
+    "static/media/cart.svg": "/maxim-savchenko/static/media/cart.167d63d807a6a56c0caf2061849dbb92.svg",
+    "index.html": "/maxim-savchenko/index.html",
+    "static/media/leftArrow.svg": "/maxim-savchenko/static/media/leftArrow.d2e6c82354f043d0a9822865b2286da7.svg",
+    "static/media/rightArrow.svg": "/maxim-savchenko/static/media/rightArrow.d15bf43104b45bec3d09313434466513.svg",
+    "static/media/downArrow.svg": "/maxim-savchenko/static/media/downArrow.6745176013df505b7827028cfd8262e3.svg",
+    "static/media/upArrow.svg": "/maxim-savchenko/static/media/upArrow.22c7531e28498a3984fd2af581646771.svg",
+    "main.215de588.css.map": "/maxim-savchenko/static/css/main.215de588.css.map",
+    "main.c76e2d40.js.map": "/maxim-savchenko/static/js/main.c76e2d40.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.215de588.css",
+    "static/js/main.c76e2d40.js"
+  ]
+}
