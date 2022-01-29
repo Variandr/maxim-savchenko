@@ -61,7 +61,7 @@ class BagCart extends PureComponent {
         return <div className={s.bag}>
             <div className={s.bagHeader}><b>My bag,</b> {products.length} {products.length === 1 ? "item" : "items"}
             </div>
-            <div>{bagItems}</div>
+            <div className={s.bagItemsContainer}>{bagItems}</div>
             <div className={s.totalContainer}><span className={s.totalName}>Total</span><span
                 className={s.totalPrice}>{activeCurrency}{totalPrice.toFixed(2)}</span></div>
             <div className={s.bagButtons}>

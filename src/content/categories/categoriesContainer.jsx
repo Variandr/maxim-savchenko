@@ -5,6 +5,8 @@ import Category from "./category"
 import {compose} from "redux"
 import withRouter from "../../HOC/withRouter"
 import {addProduct} from "../../state/bagReducer"
+import {getActiveCurrency, getCategoryName, getCategoryProducts} from "../../selectors/selectors"
+import Preloader from "../../helpers/preloader";
 
 class CategoriesContainer extends PureComponent {
     componentDidMount() {
@@ -22,6 +24,7 @@ class CategoriesContainer extends PureComponent {
     }
 
     render() {
+        if(!this.props.name) return <Preloader/>
         return <Category products={this.props.products}
                          name={this.props.name}
                          addProduct={this.props.addProduct}
@@ -31,8 +34,8 @@ class CategoriesContainer extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    name: state.categoriesPage.name,
-    products: state.categoriesPage.products,
-    activeCurrency: state.app.activeCurrency
+    name: getCategoryName(state),
+    products: getCategoryProducts(state),
+    activeCurrency: getActiveCurrency(state)
 })
 export default compose(connect(mapStateToProps, {getProducts, addProduct}), withRouter)(CategoriesContainer)

@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react"
 import s from './product.module.css'
 import Attributes from "./attribute"
+import Preloader from "../../helpers/preloader"
 
 class Product extends PureComponent {
     state = {
@@ -56,6 +57,7 @@ class Product extends PureComponent {
 
     render() {
         let {product, addProduct, activeCurrency} = this.props
+        if(!product) return <Preloader/>
         let price = product.prices.filter(p => p.currency.symbol === activeCurrency)
         let gallery = product.gallery.map((p, i) => {
             return <div key={i} className={s.productImgBtn} onClick={() => this.setImage(p)}>

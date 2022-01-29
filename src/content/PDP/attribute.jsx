@@ -7,7 +7,6 @@ class Attributes extends PureComponent {
         let attributeItems = items.map(i => {
             let isActive = false
             if (attributes && attributes[index]) {
-                console.log(attributes[index])
                 isActive = attributes[index].value === i.value
             }
             if (type === "swatch") {

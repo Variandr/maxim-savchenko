@@ -2,6 +2,7 @@ import React, {PureComponent} from "react"
 import {connect} from "react-redux"
 import Header from "./header"
 import {setActiveCurrency} from "../state/appReducer"
+import {getActiveCurrency, getCurrencies, getProducts} from "../selectors/selectors"
 
 class HeaderContainer extends PureComponent {
     render() {
@@ -16,8 +17,8 @@ class HeaderContainer extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    productsLength: state.bagPage.products.length,
-    currencies: state.app.currencies,
-    activeCurrency: state.app.activeCurrency
+    productsLength: getProducts(state).length,
+    currencies: getCurrencies(state),
+    activeCurrency: getActiveCurrency(state)
 })
 export default connect(mapStateToProps, {setActiveCurrency})(HeaderContainer)

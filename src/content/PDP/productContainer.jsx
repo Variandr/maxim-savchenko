@@ -5,6 +5,8 @@ import Product from "./product"
 import {compose} from "redux"
 import withRouter from "../../HOC/withRouter"
 import {addProduct} from "../../state/bagReducer"
+import {getActiveCurrency, getLoadingProduct, getProduct} from "../../selectors/selectors"
+import Preloader from "../../helpers/preloader";
 
 class ProductContainer extends PureComponent {
     componentDidMount() {
@@ -21,20 +23,20 @@ class ProductContainer extends PureComponent {
     }
 
     render() {
-        if (!this.props.product) {
-            return <></>
+        if (this.props.isLoading || !this.props.product) {
+            console.log("preloader")
+            return <Preloader/>
         }
-        return <>
-            <Product product={this.props.product}
+        return <Product product={this.props.product}
                      addProduct={this.props.addProduct}
                      activeCurrency={this.props.activeCurrency}
             />
-        </>
     }
 }
 
 const mapStateToProps = (state) => ({
-    product: state.productPage.product,
-    activeCurrency: state.app.activeCurrency
+    product: getProduct(state),
+    activeCurrency: getActiveCurrency(state),
+    isLoading: getLoadingProduct(state)
 })
 export default compose(connect(mapStateToProps, {getProductData, addProduct}), withRouter)(ProductContainer)

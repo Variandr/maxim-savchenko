@@ -2,6 +2,7 @@ import React, {PureComponent} from "react"
 import {connect} from "react-redux"
 import BagPage from "./bagPage"
 import {deleteProduct, setCount} from "../../state/bagReducer"
+import {getActiveCurrency, getProducts} from "../../selectors/selectors";
 
 class BagPageContainer extends PureComponent {
     render() {
@@ -14,7 +15,7 @@ class BagPageContainer extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    products: state.bagPage.products,
-    activeCurrency: state.app.activeCurrency
+    products: getProducts(state),
+    activeCurrency: getActiveCurrency(state)
 })
 export default connect(mapStateToProps, {deleteProduct, setCount})(BagPageContainer)

@@ -128,3 +128,7 @@
 .deleteBtn{
     cursor: pointer;
 }
+.bagItemsContainer {
+    height: 370px;
+    overflow:auto;
+}

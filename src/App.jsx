@@ -7,6 +7,7 @@ import BagPageContainer from "./content/bagPage/bagPageContainer"
 import HeaderContainer from "./header/headerContainer"
 import {connect} from "react-redux"
 import {initializeApp} from "./state/appReducer"
+import Preloader from "./helpers/preloader"
 
 
 class App extends PureComponent {
@@ -32,7 +33,7 @@ class App extends PureComponent {
 
     render() {
         if (!this.props.isInitialized) {
-            return <></>
+            return <Preloader/>
         }
         return <div className={`app ${this.state.isBagOpened ? 'overflow-hidden' : ''}`}>
             <HeaderContainer toggleBagOpen={this.toggleBagOpen} isBagOpened={this.state.isBagOpened}/>

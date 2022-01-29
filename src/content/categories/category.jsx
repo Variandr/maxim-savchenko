@@ -1,5 +1,5 @@
 import React from "react"
-import ProductItem from "./productItem";
+import ProductItem from "./productItem"
 import s from './category.module.css'
 
 const Category = (props) => {
