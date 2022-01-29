@@ -5,7 +5,8 @@ import logo from '../assets/logo.svg'
 import bag from '../assets/cartBox.svg'
 import BagContainer from "./bagCart/bagContainer"
 import Currency from "./curencyValue/currency"
-import {setActiveCurrency} from "../state/appReducer";
+import upArrow from '../assets/upArrow.svg'
+import downArrow from '../assets/downArrow.svg'
 
 class Header extends PureComponent {
     state = {
@@ -29,16 +30,20 @@ class Header extends PureComponent {
             </div>
             <div className={s.logo}><img src={logo} alt='logo'/></div>
             <div className={s.currencyBtn} onClick={this.toggleCurrencyOpen}>{this.props.activeCurrency}</div>
+            <div className={s.arrowCurrencyBtn}>
+                {this.state.isCurrencyOpened ? <div><img src={upArrow} alt='arrow'/></div> :
+                    <div><img src={downArrow} alt='arrow'/></div>}
+            </div>
             {this.state.isCurrencyOpened &&
-                <Currency currencies={this.props.currencies} toggleCurrencyOpen={this.toggleCurrencyOpen}
-                          setActiveCurrency={this.props.setActiveCurrency}/>}
+            <Currency currencies={this.props.currencies} toggleCurrencyOpen={this.toggleCurrencyOpen}
+                      setActiveCurrency={this.props.setActiveCurrency}/>}
             <div className={s.bagBtn} onClick={this.props.toggleBagOpen}>
                 <img className={s.bag} src={bag} alt='bag'/>
                 {this.props.productsLength > 0 && <div className={s.selectedProducts}>{this.props.productsLength}</div>}
             </div>
             {this.props.isBagOpened &&
-                <BagContainer closeBag={this.props.toggleBagOpen} setSelectedProducts={this.setSelectedProducts}/>}
-            <div className={this.props.isBagOpened ? s.coverAll : ''}></div>
+            <BagContainer closeBag={this.props.toggleBagOpen} setSelectedProducts={this.setSelectedProducts}/>}
+            <div className={this.props.isBagOpened ? s.coverAll : ''}/>
         </div>
     }
 }

@@ -23,7 +23,12 @@
     border-radius: 3px;
     margin: 6px;
 }
-
+.attributeItemCart{
+    width: 24px;
+    height: 24px;
+    font-size: 7px;
+    margin: 3px;
+}
 .attributeName {
     font-family: 'Roboto Condensed', sans-serif;
     font-style: normal;
@@ -80,7 +85,7 @@
     color: #1D1F22;
 }
 
-.addToCartBtn {
+.addToCartBtn, .addToCartDisabledBtn {
     cursor: pointer;
     background: #5ECE7B;
     border-radius: 5px;
@@ -91,8 +96,12 @@
     justify-content: center;
     text-transform: uppercase;
 }
+.addToCartDisabledBtn{
+    background: #A6A6A6;
+    cursor: default;
+}
 
-.addToCartBtn:hover {
+.addToCartBtn:active {
     background: #5ec577;
     color: #eeeeee;
 }

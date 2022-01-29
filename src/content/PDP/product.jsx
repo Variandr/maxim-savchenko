@@ -12,22 +12,22 @@ class Product extends PureComponent {
             productMainImg: image
         })
     }
-    setAttributes = (value, id, type) => {
-            let isFoundById = false;
-            this.setState({
-                attributes: this.state.attributes.map(a => {
-                    if (a.id === id) {
-                        isFoundById = true;
-                        return {id, value, type}
-                    }
-                    return a
-                })
+    setAttributes = (value, id) => {
+        let isFoundById = false;
+        this.setState({
+            attributes: this.state.attributes.map(a => {
+                if (a.id === id) {
+                    isFoundById = true;
+                    return {id, value}
+                }
+                return a
             })
-            if (!isFoundById) {
-                this.setState({
-                    attributes: [...this.state.attributes, {id, value, type}]
-                })
-            }
+        })
+        if (!isFoundById) {
+            this.setState({
+                attributes: [...this.state.attributes, {id, value}]
+            })
+        }
     }
 
     componentDidMount() {
@@ -45,7 +45,7 @@ class Product extends PureComponent {
             let tempArr = []
             this.props.product.attributes.map(a => {
                 a.items.forEach((i, index) => {
-                    if (index === 0) tempArr = [...tempArr, {id: a.id, value: i.value, type: a.type}]
+                    if (index === 0) tempArr = [...tempArr, {id: a.id, value: i.value}]
                 })
             })
             this.setState({
@@ -64,7 +64,7 @@ class Product extends PureComponent {
         })
         let attributes = product.attributes.map((a, index) => {
             return <Attributes index={index} id={a.id} key={a.id} name={a.name} items={a.items} type={a.type}
-                              setAttributes={this.setAttributes} attributes={this.state.attributes}/>
+                               setAttributes={this.setAttributes} attributes={this.state.attributes}/>
         })
         return <div className={s.body}>
             <div>{gallery}</div>
@@ -76,11 +76,12 @@ class Product extends PureComponent {
                 <div className={s.productAttributes}>{attributes}</div>
                 <div className={s.attributeName}>Price:</div>
                 <div className={s.price}>{activeCurrency}{price[0].amount}</div>
-                <div className={s.addToCartBtn}
-                     onClick={() => addProduct(product.id, product.name, product.brand, product.gallery[0], this.state.attributes, product.prices)}>Add
-                    to cart
+                <div className={product.inStock ? s.addToCartBtn : s.addToCartDisabledBtn} onClick={() => {
+                    if (product.inStock) addProduct(product.id, this.state.attributes)
+                }}>Add to
+                    cart
                 </div>
-                <div className={s.productDescription} dangerouslySetInnerHTML={{__html: product.description}}>{}</div>
+                <div className={s.productDescription} dangerouslySetInnerHTML={{__html: product.description}}/>
             </div>
         </div>
     }

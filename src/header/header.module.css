@@ -4,14 +4,16 @@
     height: 80px;
     width: 100vw;
 }
-.coverAll{
+
+.coverAll {
     position: absolute;
     margin-top: 80px;
     background: rgba(57, 55, 72, 0.22);
-    min-width:100%;
-    min-height:calc(100vh - 80px);
+    min-width: 100%;
+    min-height: calc(100vh - 80px);
     z-index: 1;
 }
+
 .navbar {
     top: calc(50% - 20px / 2 - 16px);
     display: flex;
@@ -48,16 +50,19 @@
     left: 48vw;
     top: calc(50% - 20px / 2 - 16px);
 }
-.bag{
+
+.bag {
     width: 25px;
 }
+
 .bagBtn {
     position: absolute;
     cursor: pointer;
     top: calc(50% - 20px / 2 - 16px);
     right: 5vw;
 }
-.selectedProducts{
+
+.selectedProducts {
     margin: -38px 0 0 15px;
     position: absolute;
     background: #1D1F22;
@@ -71,7 +76,8 @@
     justify-content: center;
     font-weight: bold;
 }
-.currencyBtn{
+
+.currencyBtn {
     position: absolute;
     cursor: pointer;
     top: calc(50% - 20px / 2 - 16px);
@@ -79,17 +85,25 @@
     font-size: 25px;
     font-weight: bold;
 }
-.currenciesContainer{
-    z-index: 2;
-    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+
+.currenciesContainer {
+    z-index: 10;
+    box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
     width: 114px;
     background: #FFFFFF;
     position: absolute;
     top: calc(100% - 20px / 2 - 16px);
     right: 15vw;
 }
-.currencyBox{
+
+.currencyBox {
     cursor: pointer;
     font-size: 18px;
-    margin:20px;
+    margin: 20px;
+}
+
+.arrowCurrencyBtn {
+    position: absolute;
+    top: calc(50% - 20px / 2 - 16px);
+    right: 14vw;
 }

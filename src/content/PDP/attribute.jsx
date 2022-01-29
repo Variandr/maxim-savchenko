@@ -3,24 +3,29 @@ import React, {PureComponent} from "react"
 
 class Attributes extends PureComponent {
     render() {
-        let {id, name, items, type, setAttributes, attributes, index} = this.props;
+        let {id = 0, name = '', items, type, setAttributes = null, attributes, index, cart = false} = this.props;
         let attributeItems = items.map(i => {
             let isActive = false
-            if (attributes !== null) {
+            if (attributes && attributes[index]) {
+                console.log(attributes[index])
                 isActive = attributes[index].value === i.value
             }
             if (type === "swatch") {
-                return <div onClick={() => setAttributes(i.value, id, type)}
-                            className={s.attributeItem + ' ' + (isActive && s.activeAttributeColorItem)} key={i.id}
-                            style={{background: i.value}}> </div>
+                return <div onClick={() => {
+                    if (setAttributes) setAttributes(i.value, id)
+                }}
+                            className={(cart && s.attributeItemCart) + ' ' + s.attributeItem + ' ' + (isActive && s.activeAttributeColorItem)} key={i.id}
+                            style={{background: i.value}}/>
             } else if (type === "text") {
-                return <div onClick={() => setAttributes(i.value, id, type)}
-                            className={s.attributeItem + ' ' + (isActive && s.activeAttributeTextItem)}
+                return <div onClick={() => {
+                    if (setAttributes) setAttributes(i.value, id)
+                }}
+                            className={(cart && s.attributeItemCart) + ' ' + s.attributeItem + ' ' + (isActive && s.activeAttributeTextItem)}
                             key={i.id}>{i.value}</div>
             } else return null
         })
         return <div>
-            <div className={s.attributeName}>{name}:</div>
+            <div className={s.attributeName}>{name}{name && ':'}</div>
             <div className={s.attributes}>{attributeItems}</div>
         </div>
     }
