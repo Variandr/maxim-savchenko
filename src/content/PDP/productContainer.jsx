@@ -24,7 +24,6 @@ class ProductContainer extends PureComponent {
 
     render() {
         if (this.props.isLoading || !this.props.product) {
-            console.log("preloader")
             return <Preloader/>
         }
         return <Product product={this.props.product}

@@ -52,7 +52,9 @@ export const setCount = (count, uniqueItemId) => (dispatch) => {
         products.map(p => {
             if (p.uniqueItemId === uniqueItemId) {
                 isFound = true
+                return p
             }
+            return p
         })
         if (isFound) {
             products = products.map(p => {
@@ -68,9 +70,12 @@ export const setCount = (count, uniqueItemId) => (dispatch) => {
 }
 export const addProduct = (id, chosenAttributes, count = 1) => async (dispatch) => {
     let productData = await productsAPI.getProduct(id)
-    let uniqueItemId = id + chosenAttributes.map(a => {
-        return a.value
-    })
+    let uniqueItemId = id
+    if (chosenAttributes) {
+        uniqueItemId += chosenAttributes.map(a => {
+            return a.value
+        })
+    }
     if (id === productData.id) {
         let cart = {
             uniqueItemId, id, chosenAttributes, productData, count
@@ -81,14 +86,19 @@ export const addProduct = (id, chosenAttributes, count = 1) => async (dispatch) 
             products.map(p => {
                 if (p.uniqueItemId === uniqueItemId) {
                     isFound = true
+                    return p
                 }
+                return p
             })
             if (!isFound) {
                 products.push(cart)
                 localStorage.setItem('bag', JSON.stringify(products))
                 dispatch(_addProduct(uniqueItemId, id, chosenAttributes, productData, count))
             } else console.log("Product already exist inside cart")
-        } else localStorage.setItem('bag', JSON.stringify([cart]))
+        } else {
+            localStorage.setItem('bag', JSON.stringify([cart]))
+            dispatch(_addProduct(uniqueItemId, id, chosenAttributes, productData, count))
+        }
     }
 }
 const _deleteProduct = (uniqueItemId) => ({
@@ -102,7 +112,9 @@ export const deleteProduct = (uniqueItemId) => (dispatch) => {
         products.map(p => {
             if (p.uniqueItemId === uniqueItemId) {
                 isFound = true
+                return p
             }
+            return p
         })
         if (isFound) {
             products = products.filter(p => p.uniqueItemId !== uniqueItemId)

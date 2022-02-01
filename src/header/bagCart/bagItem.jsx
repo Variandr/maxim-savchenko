@@ -7,7 +7,7 @@ const BagItem = ({
                      activeCurrency, price, deleteProduct, uniqueItemId, setCount
                  }) => {
     let getAttributes = attributes.map((a, index) => {
-        return <Attributes index={index} key={a.id} items={a.items} type={a.type}
+        return <Attributes index={index} key={a.id} items={a.items} type={a.type} name={a.name}
                            attributes={chosenAttributes} cart={true}/>
     })
     return <div className={s.bagItem}>
@@ -34,7 +34,7 @@ const BagItem = ({
                 </div>
             </div>
             <div>
-                <div><img className={s.bagItemImg} src={photo} alt={photo}/></div>
+                <div className={s.bagItemImgContainer}><img className={s.bagItemImg} src={photo} alt={photo}/></div>
             </div>
             <div className={s.deleteBtn} onClick={() => deleteProduct(uniqueItemId)}>X
             </div>

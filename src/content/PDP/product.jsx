@@ -2,6 +2,7 @@ import React, {PureComponent} from "react"
 import s from './product.module.css'
 import Attributes from "./attribute"
 import Preloader from "../../helpers/preloader"
+import ReactHtmlParser from 'html-react-parser'
 
 class Product extends PureComponent {
     state = {
@@ -48,6 +49,7 @@ class Product extends PureComponent {
                 a.items.forEach((i, index) => {
                     if (index === 0) tempArr = [...tempArr, {id: a.id, value: i.value}]
                 })
+                return a
             })
             this.setState({
                 attributes: tempArr
@@ -57,7 +59,7 @@ class Product extends PureComponent {
 
     render() {
         let {product, addProduct, activeCurrency} = this.props
-        if(!product) return <Preloader/>
+        if (!product) return <Preloader/>
         let price = product.prices.filter(p => p.currency.symbol === activeCurrency)
         let gallery = product.gallery.map((p, i) => {
             return <div key={i} className={s.productImgBtn} onClick={() => this.setImage(p)}>
@@ -69,10 +71,13 @@ class Product extends PureComponent {
                                setAttributes={this.setAttributes} attributes={this.state.attributes}/>
         })
         return <div className={s.body}>
-            <div>{gallery}</div>
-            <div><img key={this.state.productMainImg} className={s.mainImg} src={this.state.productMainImg}
-                      alt="mainProductImg"/></div>
-            <div>
+            <div className={s.galleryAndImgContainer}>
+                <div>{gallery}</div>
+                <div className={s.mainImgContainer}><img key={this.state.productMainImg} className={s.mainImg}
+                                                         src={this.state.productMainImg}
+                                                         alt="mainProductImg"/></div>
+            </div>
+            <div className={s.productDescriptionContainer}>
                 <div className={s.productName}>{product.name}</div>
                 <div className={s.productBrand}>{product.brand}</div>
                 <div className={s.productAttributes}>{attributes}</div>
@@ -83,7 +88,7 @@ class Product extends PureComponent {
                 }}>Add to
                     cart
                 </div>
-                <div className={s.productDescription} dangerouslySetInnerHTML={{__html: product.description}}/>
+                <div className={s.productDescription}>{ReactHtmlParser(product.description)}</div>
             </div>
         </div>
     }

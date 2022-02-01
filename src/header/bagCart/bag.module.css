@@ -45,8 +45,15 @@
     background: #5ECE7B;
 }
 
-.bagItemImg {
+.bagItemImgContainer {
     width: 105px;
+    height: 137px;
+}
+
+.bagItemImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .bagItemName, .bagItemBrand {
@@ -77,7 +84,7 @@
 }
 
 .countNum {
-    margin: 30px 5px;
+    margin: 35px 5px;
     color: #1D1F22;
     font-weight: 600;
     font-size: 16px;
@@ -125,10 +132,13 @@
 .countingAndImgContainer {
     display: flex;
 }
-.deleteBtn{
+
+.deleteBtn {
     cursor: pointer;
+    height: 20px;
 }
+
 .bagItemsContainer {
     height: 370px;
-    overflow:auto;
+    overflow: auto;
 }

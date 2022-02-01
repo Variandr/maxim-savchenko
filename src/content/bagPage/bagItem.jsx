@@ -1,10 +1,10 @@
 import s from './bagPage.module.css'
-import React, {Component} from "react"
+import React, {PureComponent} from "react"
 import Attributes from "../PDP/attribute"
 import leftArrow from '../../assets/leftArrow.svg'
 import rightArrow from '../../assets/rightArrow.svg'
 
-class BagItem extends Component {
+class BagItem extends PureComponent {
     state = {
         count: this.props.count,
         imgId: 0
@@ -24,7 +24,7 @@ class BagItem extends Component {
             setCount
         } = this.props;
         let getAttributes = attributes.map((a, index) => {
-            return <Attributes index={index} key={a.id} items={a.items} type={a.type}
+            return <Attributes index={index} key={a.id} items={a.items} type={a.type} name={a.name}
                                attributes={chosenAttributes}/>
         })
         let price = prices.filter(p => p.currency.symbol === activeCurrency)
@@ -38,16 +38,16 @@ class BagItem extends Component {
             <div className={s.imgAndCounterContainer}>
                 <div className={s.counterContainer}>
                     <div className={s.counter} onClick={() => {
-                        this.setState({count: this.state.count += 1})
-                        setCount(this.state.count, uniqueItemId)
+                        this.setState({count: this.state.count + 1})
+                        setCount(this.state.count + 1, uniqueItemId)
                     }}>+
                     </div>
                     <div className={s.countNum}>{this.state.count}</div>
                     <div className={s.counter}
                          onClick={() => {
                              if (this.state.count > 1) {
-                                 this.setState({count: this.state.count -= 1})
-                                 setCount(this.state.count, uniqueItemId)
+                                 this.setState({count: this.state.count - 1})
+                                 setCount(this.state.count - 1, uniqueItemId)
                              }
                          }
                          }>-
@@ -55,26 +55,31 @@ class BagItem extends Component {
                 </div>
                 <div>
                     {gallery.length > 1 &&
-                    <div className={s.leftArrowBtn} onClick={() => {
-                        if (this.state.imgId > 0) {
-                            this.setState({
-                                imgId: this.state.imgId -= 1
-                            })
-                        }
-                    }}>
-                        <img src={leftArrow} alt='arrowBtn'/></div>
+                        <div>
+                            {this.state.imgId > 0 &&
+                                <div className={s.leftArrowBtn} onClick={() => {
+                                    if (this.state.imgId > 0) {
+                                        this.setState({
+                                            imgId: this.state.imgId - 1
+                                        })
+                                    }
+                                }}><img src={leftArrow} alt='arrowBtn'/></div>
+                            }
+                            {this.state.imgId < gallery.length - 1 &&
+                                <div className={s.rightArrowBtn} onClick={() => {
+                                    if (this.state.imgId < gallery.length - 1) {
+                                        this.setState({
+                                            imgId: this.state.imgId + 1
+                                        })
+                                    }
+                                }}><img src={rightArrow} alt='arrowBtn'/></div>
+                            }
+                        </div>
                     }
-                    <img className={s.cartImg} src={this.props.gallery[this.state.imgId]} alt='bagItemPhoto'/>
-                    {gallery.length > 1 &&
-                    <div className={s.rightArrowBtn} onClick={() => {
-                        if (this.state.imgId < gallery.length - 1) {
-                            this.setState({
-                                imgId: this.state.imgId += 1
-                            })
-                        }
-                    }}>
-                        <img src={rightArrow} alt='arrowBtn'/></div>
-                    }
+                    <div className={s.cartImgContainer}><img className={s.cartImg}
+                                                             src={this.props.gallery[this.state.imgId]}
+                                                             alt='bagItemPhoto'/>
+                    </div>
                 </div>
                 <div className={s.deleteBtn} onClick={() => deleteProduct(uniqueItemId)}>X</div>
             </div>

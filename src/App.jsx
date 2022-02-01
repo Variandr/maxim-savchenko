@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react"
-import './App.css'
+import s from './App.module.css'
 import {Route, Routes, Navigate} from "react-router-dom"
 import CategoriesContainer from "./content/categories/categoriesContainer"
 import ProductContainer from "./content/PDP/productContainer"
@@ -8,6 +8,7 @@ import HeaderContainer from "./header/headerContainer"
 import {connect} from "react-redux"
 import {initializeApp} from "./state/appReducer"
 import Preloader from "./helpers/preloader"
+import {getCategories, getInitialize} from "./selectors/selectors"
 
 
 class App extends PureComponent {
@@ -21,13 +22,12 @@ class App extends PureComponent {
 
     constructor() {
         super()
-        this.toggleBagOpen = this.toggleBagOpen.bind(this)
+        this.toggleBagOpening = this.toggleBagOpening.bind(this)
     }
 
-    toggleBagOpen = () => {
+    toggleBagOpening = (isBagOpened) => {
         this.setState({
-            ...this.state,
-            isBagOpened: !this.state.isBagOpened
+            isBagOpened: isBagOpened
         })
     }
 
@@ -35,20 +35,21 @@ class App extends PureComponent {
         if (!this.props.isInitialized) {
             return <Preloader/>
         }
-        return <div className={`app ${this.state.isBagOpened ? 'overflow-hidden' : ''}`}>
-            <HeaderContainer toggleBagOpen={this.toggleBagOpen} isBagOpened={this.state.isBagOpened}/>
+        return <div className={s.app + ' ' + (this.state.isBagOpened ? s.overflowHidden : '')}>
+            <HeaderContainer toggleBagOpening={this.toggleBagOpening} isBagOpened={this.state.isBagOpened}/>
             <Routes>
-                <Route path='/' element={<Navigate to="/categories/all"/>}/>
+                <Route path='/' element={<Navigate to={"/categories/"+ this.props.categories[0].name}/>}/>
                 <Route path='categories/:categoryId' element={<CategoriesContainer/>}/>
                 <Route path='product/:productId' element={<ProductContainer/>}/>
                 <Route path='/basket' element={<BagPageContainer/>}/>
-                <Route path='*' element={<div className='error'><h1>404 Page not found</h1></div>}/>
+                <Route path='*' element={<div className={s.error}><h1>404 Page not found</h1></div>}/>
             </Routes>
         </div>
     }
 }
 
 let mapStateToProps = (state) => ({
-    isInitialized: state.app.isInitialized
+    isInitialized: getInitialize(state),
+    categories: getCategories(state)
 })
 export default connect(mapStateToProps, {initializeApp})(App);

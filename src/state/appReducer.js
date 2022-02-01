@@ -1,5 +1,6 @@
 import {currenciesAPI} from "../api/api"
 import {setProducts} from "./bagReducer"
+import {getCategories} from "./categoriesReducer";
 
 const SET_CURRENCIES = '/app/SET_CURRENCIES'
 const SET_ACTIVE_CURRENCY = '/app/SET_ACTIVE_CURRENCY'
@@ -37,7 +38,7 @@ export const setActiveCurrency = (activeCurrency) => ({
     type: SET_ACTIVE_CURRENCY, activeCurrency
 })
 export const initializeApp = () => (dispatch, getState) => {
-    let promise = [dispatch(_getCurrencies()),dispatch(setProducts())]
+    let promise = [dispatch(_getCurrencies()),dispatch(setProducts()), dispatch(getCategories())]
     Promise.all([...promise]).then(() => {
         dispatch(setActiveCurrency(getState().app.currencies[0].symbol))
         dispatch(_initializeSuccess())

@@ -6,7 +6,17 @@ const client = new ApolloClient({
 });
 
 export const categoriesAPI = {
-    getCategory(category) {
+    getCategories() {
+        return client.query({
+            query: gql`
+            query Query {
+              categories {
+                name
+              }
+            }`
+        }).then(res => res.data.categories)
+    },
+    getCategoryData(category) {
         return client.query({
             query: gql`
                 query Query($input: CategoryInput) {
@@ -19,6 +29,7 @@ export const categoriesAPI = {
                       inStock
                       gallery
                       attributes {
+                        name
                         type
                         items {
                           id

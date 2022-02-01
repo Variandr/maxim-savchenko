@@ -86,6 +86,11 @@
     font-weight: bold;
 }
 
+.currencyBtnDisabled {
+    color: #A6A6A6;
+    cursor: default;
+}
+
 .currenciesContainer {
     z-index: 10;
     box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
@@ -99,7 +104,12 @@
 .currencyBox {
     cursor: pointer;
     font-size: 18px;
-    margin: 20px;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.currencyBox:hover {
+    background: #dcdcdc;
 }
 
 .arrowCurrencyBtn {

@@ -12,37 +12,54 @@ class Header extends PureComponent {
     state = {
         isCurrencyOpened: false
     }
-    toggleCurrencyOpen = () => {
+    toggleCurrencyOpening = (isCurrencyOpened) => {
         this.setState({
-            isCurrencyOpened: !this.state.isCurrencyOpened
+            isCurrencyOpened: isCurrencyOpened
         })
     }
 
     render() {
+        let productsLength = 0
+        if (this.props.products) {
+            this.props.products.map(p => {
+                productsLength += p.count
+                return p
+            })
+        }
+        let menu = this.props.categories.map(c => {
+            return <NavLink key={c.name} className={({isActive}) =>
+                isActive ? s.activeButton : s.button} to={'/categories/' + c.name}>{c.name}</NavLink>
+        })
         return <div className={s.body}>
             <div className={s.navbar}>
-                <NavLink className={({isActive}) =>
-                    isActive ? s.activeButton : s.button} to={'/categories/all'}>All categories</NavLink>
-                <NavLink className={({isActive}) =>
-                    isActive ? s.activeButton : s.button} to={'/categories/clothes'}>Clothes</NavLink>
-                <NavLink className={({isActive}) =>
-                    isActive ? s.activeButton : s.button} to={'/categories/tech'}>Tech</NavLink>
+                {menu}
             </div>
             <div className={s.logo}><img src={logo} alt='logo'/></div>
-            <div className={s.currencyBtn} onClick={this.toggleCurrencyOpen}>{this.props.activeCurrency}</div>
-            <div className={s.arrowCurrencyBtn}>
-                {this.state.isCurrencyOpened ? <div><img src={upArrow} alt='arrow'/></div> :
-                    <div><img src={downArrow} alt='arrow'/></div>}
+            <div tabIndex="0" onBlur={() => this.toggleCurrencyOpening(false)}>
+                <div className={s.currencyBtn + ' ' + (this.props.isBagOpened ? s.currencyBtnDisabled : '')}
+                     onClick={() => {
+                         if (!this.props.isBagOpened) this.toggleCurrencyOpening(true)
+                     }}>{this.props.activeCurrency}</div>
+                <div className={s.arrowCurrencyBtn}>
+                    {this.state.isCurrencyOpened ? <div><img src={upArrow} alt='arrow'/></div> :
+                        <div><img src={downArrow} alt='arrow'/></div>}
+                </div>
+                {this.state.isCurrencyOpened &&
+                    <Currency currencies={this.props.currencies} toggleCurrencyOpening={this.toggleCurrencyOpening}
+                              setActiveCurrency={this.props.setActiveCurrency}/>
+                }
             </div>
-            {this.state.isCurrencyOpened &&
-            <Currency currencies={this.props.currencies} toggleCurrencyOpen={this.toggleCurrencyOpen}
-                      setActiveCurrency={this.props.setActiveCurrency}/>}
-            <div className={s.bagBtn} onClick={this.props.toggleBagOpen}>
-                <img className={s.bag} src={bag} alt='bag'/>
-                {this.props.productsLength > 0 && <div className={s.selectedProducts}>{this.props.productsLength}</div>}
+            <div tabIndex="0" onBlur={() => setTimeout(() => this.props.toggleBagOpening(false), 200)}>
+                <div className={s.bagBtn} onClick={() => this.props.toggleBagOpening(!this.props.isBagOpened)}>
+                    <img className={s.bag} src={bag} alt='bag'/>
+                    {productsLength > 0 &&
+                        <div className={s.selectedProducts}>{productsLength}</div>}
+                </div>
+                {this.props.isBagOpened &&
+                    <BagContainer toggleBagOpening={this.props.toggleBagOpening}
+                                  setSelectedProducts={this.setSelectedProducts}
+                                  productsLength={productsLength}/>}
             </div>
-            {this.props.isBagOpened &&
-            <BagContainer closeBag={this.props.toggleBagOpen} setSelectedProducts={this.setSelectedProducts}/>}
             <div className={this.props.isBagOpened ? s.coverAll : ''}/>
         </div>
     }
