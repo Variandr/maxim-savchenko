@@ -23,12 +23,11 @@ class Attributes extends PureComponent {
                 return <ColorBox onClick={setAttributeByClick}
                                  className={attributeClassname + ' ' + s.attributeItem + ' ' + activeImgAttribute}
                                  key={i.id}/>
-            }
-            if (type === "text") {
+            }else if (type === "text") {
                 return <div onClick={setAttributeByClick}
                             className={attributeClassname + ' ' + s.attributeItem + ' ' + activeTextAttribute}
                             key={i.id}>{i.value}</div>
-            }
+            } else return null
         })
         let attributeName = cart ? s.attributeNameCart : s.attributeName
         return <div>
