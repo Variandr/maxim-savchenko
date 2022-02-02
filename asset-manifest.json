@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/maxim-savchenko/static/css/main.9ddfe5e3.css",
-    "main.js": "/maxim-savchenko/static/js/main.b38a7a7f.js",
+    "main.js": "/maxim-savchenko/static/js/main.471bb3b5.js",
     "static/media/logo.svg": "/maxim-savchenko/static/media/logo.19d5e15f649d0080d15bcb19a7111c85.svg",
     "static/media/cartBox.svg": "/maxim-savchenko/static/media/cartBox.0ce3a0697047a0255ffa862f98c907ba.svg",
     "static/media/cart.svg": "/maxim-savchenko/static/media/cart.167d63d807a6a56c0caf2061849dbb92.svg",
@@ -11,10 +11,10 @@
     "static/media/downArrow.svg": "/maxim-savchenko/static/media/downArrow.6745176013df505b7827028cfd8262e3.svg",
     "static/media/upArrow.svg": "/maxim-savchenko/static/media/upArrow.22c7531e28498a3984fd2af581646771.svg",
     "main.9ddfe5e3.css.map": "/maxim-savchenko/static/css/main.9ddfe5e3.css.map",
-    "main.b38a7a7f.js.map": "/maxim-savchenko/static/js/main.b38a7a7f.js.map"
+    "main.471bb3b5.js.map": "/maxim-savchenko/static/js/main.471bb3b5.js.map"
   },
   "entrypoints": [
     "static/css/main.9ddfe5e3.css",
-    "static/js/main.b38a7a7f.js"
+    "static/js/main.471bb3b5.js"
   ]
 }
