@@ -38,7 +38,7 @@ class Header extends PureComponent {
             <div tabIndex="0" onBlur={() => this.toggleCurrencyOpening(false)}>
                 <div className={s.currencyBtn + ' ' + (this.props.isBagOpened ? s.currencyBtnDisabled : '')}
                      onClick={() => {
-                         if (!this.props.isBagOpened) this.toggleCurrencyOpening(true)
+                         if (!this.props.isBagOpened) this.toggleCurrencyOpening(!this.state.isCurrencyOpened)
                      }}>{this.props.activeCurrency}</div>
                 <div className={s.arrowCurrencyBtn}>
                     {this.state.isCurrencyOpened ? <div><img src={upArrow} alt='arrow'/></div> :

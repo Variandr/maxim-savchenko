@@ -30,8 +30,8 @@ class BagItem extends PureComponent {
         let price = prices.filter(p => p.currency.symbol === activeCurrency)
         return <div className={s.bagContainer}>
             <div>
-                <div className={s.cartName}>{name}</div>
                 <div className={s.cartBrand}>{brand}</div>
+                <div className={s.cartName}>{name}</div>
                 <div className={s.cartPrice}>{activeCurrency}{price[0].amount}</div>
                 <div>{getAttributes}</div>
             </div>

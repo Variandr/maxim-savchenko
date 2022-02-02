@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto+Condensed:wght@700&family=Source+Sans+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto+Condensed:wght@700&family=Roboto&family=Source+Sans+Pro:wght@300&display=swap');
 
 .body {
     display: flex;
@@ -9,7 +9,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     cursor: pointer;
     display: flex;
-    font-weight: 600;
+    font-weight: 400;
     width: 63px;
     height: 45px;
     border: 1px solid #A6A6A6;
@@ -19,21 +19,21 @@
     letter-spacing: 0.05em;
     font-size: 16px;
     line-height: 18px;
-    border-radius: 3px;
     margin: 6px;
 }
 
 .attributeItemCart {
+    font-weight: 700;
     width: 24px;
     height: 24px;
     font-size: 7px;
     margin: 3px;
+    cursor: default;
 }
 
 .attributeName {
     font-family: 'Roboto Condensed', sans-serif;
-    font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 18px;
     line-height: 18px;
     text-transform: uppercase;
@@ -80,14 +80,17 @@
     box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
 }
 
-.productName {
+.productBrand {
+    font-family: 'Raleway', sans-serif;
     color: #1D1F22;
     font-weight: 600;
     font-size: 30px;
     line-height: 27px;
 }
 
-.productBrand {
+.productName {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
     color: #1D1F22;
     margin: 15px 0;
     font-size: 30px;
@@ -99,12 +102,18 @@
 }
 
 .productDescription {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     font-size: 16px;
     line-height: 159.96%;
     color: #1D1F22;
 }
 
 .addToCartBtn, .addToCartDisabledBtn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
     cursor: pointer;
     background: #5ECE7B;
     border-radius: 5px;
@@ -128,7 +137,7 @@
 
 .price {
     font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 24px;
     line-height: 18px;
     margin: 20px 0;

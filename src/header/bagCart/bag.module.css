@@ -10,8 +10,17 @@
 }
 
 .bagHeader {
+    font-family: 'Raleway', sans-serif;
     font-size: 16px;
     margin: 0 20px;
+}
+
+.bagHeaderName {
+    font-weight: 700;
+}
+
+.bagHeaderItems {
+    font-weight: 500;
 }
 
 .viewBagBtn {
@@ -86,7 +95,7 @@
 .countNum {
     margin: 35px 5px;
     color: #1D1F22;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
 }
 
@@ -97,14 +106,14 @@
 .bagItemPrice {
     margin: 10px 0;
     font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 160%;
 }
 
 .totalName {
     font-family: Roboto, sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 18px;
 }
@@ -112,7 +121,7 @@
 .totalPrice {
     margin: -5px 0 0 0;
     font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
     line-height: 160%;
 }

@@ -12,8 +12,8 @@ const BagItem = ({
     })
     return <div className={s.bagItem}>
         <div>
-            <div className={s.bagItemName}>{name}</div>
             <div className={s.bagItemBrand}>{brand}</div>
+            <div className={s.bagItemName}>{name}</div>
             <div className={s.bagItemPrice}>{activeCurrency}{price}</div>
             <div>{getAttributes}</div>
         </div>

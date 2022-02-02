@@ -78,8 +78,8 @@ class Product extends PureComponent {
                                                          alt="mainProductImg"/></div>
             </div>
             <div className={s.productDescriptionContainer}>
-                <div className={s.productName}>{product.name}</div>
                 <div className={s.productBrand}>{product.brand}</div>
+                <div className={s.productName}>{product.name}</div>
                 <div className={s.productAttributes}>{attributes}</div>
                 <div className={s.attributeName}>Price:</div>
                 <div className={s.price}>{activeCurrency}{price[0].amount}</div>

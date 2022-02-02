@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
 .body {
     position: relative;
     background: #FFFFFF;
@@ -26,6 +27,7 @@
 }
 
 .button, .activeButton {
+    font-family: 'Raleway', sans-serif;
     text-decoration: none;
     outline: none;
     font-size: 16px;
@@ -37,12 +39,14 @@
 
 .button {
     color: #1D1F22;
+    font-weight: 400;
 }
 
 .activeButton {
     padding: 0 14px;
     color: #5ECE7B;
     border-bottom: #5ECE7B solid 2px;
+    font-weight: normal;
 }
 
 .logo {
@@ -78,12 +82,13 @@
 }
 
 .currencyBtn {
+    font-family: 'Raleway', sans-serif;
     position: absolute;
     cursor: pointer;
     top: calc(50% - 20px / 2 - 16px);
     right: 15vw;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .currencyBtnDisabled {

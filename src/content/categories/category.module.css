@@ -38,6 +38,7 @@
     align-items: center;
     z-index: 1;
     font-family: 'Raleway', sans-serif;
+    font-weight: 400;
     font-size: 24px;
     line-height: 160%;
     background: rgba(255, 255, 255, 0.5);
@@ -51,24 +52,13 @@
     padding: 16px;
 }
 
-.name, .outOfStockName{
+.name, .outOfStockName {
     font-family: 'Raleway', sans-serif;
     position: relative;
-    margin: 15px 0 0 16px;
+    margin: 40px 0 0 16px;
     font-weight: 300;
     line-height: 160%;
     font-size: 18px;
-}
-.brand, .outOfStockBrand{
-    font-family: 'Raleway', sans-serif;
-    position: relative;
-    margin: 2px 16px;
-    font-weight: 200;
-    line-height: 160%;
-    font-size: 14px;
-}
-.outOfStockBrand{
-    color: #b0b0b0;
 }
 
 .outOfStockName {
@@ -89,8 +79,8 @@
 }
 
 .cart {
-    margin: 15px;
-    width: 30px;
+    margin: 13px;
+    width: 25px;
 }
 
 .btnAdd {
@@ -100,8 +90,8 @@
     position: absolute;
     background: #5ECE7B;
     border-radius: 30px;
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     z-index: 2;
     margin: -110px 300px;
 }
@@ -111,6 +101,8 @@
 }
 
 .categoryName {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
     font-size: 42px;
     line-height: 160%;
     margin: 20px 0 0 100px;

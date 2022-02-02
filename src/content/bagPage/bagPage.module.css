@@ -6,30 +6,29 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin: 100px 300px;
+    margin: 0 300px;
     left: -200px;
 }
 
 .cart {
     font-family: Raleway, sans-serif;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 32px;
     line-height: 40px;
-    margin-left: 101px;
+    margin: 0 0 80px 101px;
 }
 
-.cartName {
-    margin: 20px 0;
+.cartBrand {
+    margin: 15px 0;
     font-family: Raleway, sans-serif;
     font-weight: 600;
     font-size: 30px;
     line-height: 27px;
 }
 
-.cartBrand {
+.cartName {
     font-family: Raleway, sans-serif;
-    font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 30px;
     line-height: 27px;
 }
@@ -57,7 +56,7 @@
 
 .countNum {
     font-family: Raleway, sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 24px;
     line-height: 160%;
     margin: 28px 12px;
@@ -65,10 +64,10 @@
 
 .cartPrice {
     font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 24px;
     line-height: 18px;
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .deleteBtn {
