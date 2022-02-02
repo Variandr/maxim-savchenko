@@ -9,11 +9,13 @@ class Product extends PureComponent {
         productMainImg: null,
         attributes: null
     }
+
     setImage = (image) => {
         this.setState({
             productMainImg: image
         })
     }
+
     setAttributes = (value, id) => {
         let isFoundById = false;
         this.setState({
@@ -70,12 +72,17 @@ class Product extends PureComponent {
             return <Attributes index={index} id={a.id} key={a.id} name={a.name} items={a.items} type={a.type}
                                setAttributes={this.setAttributes} attributes={this.state.attributes}/>
         })
+        let AddToCartButtonClassname = product.inStock ? s.addToCartBtn : s.addToCartDisabledBtn
+        let AddToCartOnClick = () => {
+            if (product.inStock) addProduct(product.id, this.state.attributes)
+        }
         return <div className={s.body}>
             <div className={s.galleryAndImgContainer}>
                 <div>{gallery}</div>
-                <div className={s.mainImgContainer}><img key={this.state.productMainImg} className={s.mainImg}
-                                                         src={this.state.productMainImg}
-                                                         alt="mainProductImg"/></div>
+                <div className={s.mainImgContainer}>
+                    <img key={this.state.productMainImg} className={s.mainImg}
+                         src={this.state.productMainImg} alt="mainProductImg"/>
+                </div>
             </div>
             <div className={s.productDescriptionContainer}>
                 <div className={s.productBrand}>{product.brand}</div>
@@ -83,11 +90,7 @@ class Product extends PureComponent {
                 <div className={s.productAttributes}>{attributes}</div>
                 <div className={s.attributeName}>Price:</div>
                 <div className={s.price}>{activeCurrency}{price[0].amount}</div>
-                <div className={product.inStock ? s.addToCartBtn : s.addToCartDisabledBtn} onClick={() => {
-                    if (product.inStock) addProduct(product.id, this.state.attributes)
-                }}>Add to
-                    cart
-                </div>
+                <div className={AddToCartButtonClassname} onClick={AddToCartOnClick}>Add to cart</div>
                 <div className={s.productDescription}>{ReactHtmlParser(product.description)}</div>
             </div>
         </div>

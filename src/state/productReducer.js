@@ -2,6 +2,7 @@ import {productsAPI} from "../api/api"
 
 const SET_PRODUCT = '/product/SET_PRODUCT'
 const SET_LOADING = '/product/SET_LOADING'
+
 let initialState = {
     product: null,
     isLoading: false
@@ -18,12 +19,14 @@ let ProductReducer = (state = initialState, action) => {
     }
 }
 export default ProductReducer
+
 const _setProduct = (product) => ({
     type: SET_PRODUCT, product
 })
 const _setLoading = (isLoading) => ({
     type: SET_LOADING, isLoading
 })
+
 export const getProductData = (id) => async (dispatch) => {
     dispatch(_setLoading(true))
     let product = await productsAPI.getProduct(id)

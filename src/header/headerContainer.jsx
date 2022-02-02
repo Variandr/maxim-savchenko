@@ -12,8 +12,7 @@ class HeaderContainer extends PureComponent {
                        currencies={this.props.currencies}
                        setActiveCurrency={this.props.setActiveCurrency}
                        activeCurrency={this.props.activeCurrency}
-                       categories={this.props.categories}
-        />
+                       categories={this.props.categories}/>
     }
 }
 

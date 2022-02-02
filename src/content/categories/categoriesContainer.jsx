@@ -6,7 +6,7 @@ import {compose} from "redux"
 import withRouter from "../../HOC/withRouter"
 import {addProduct} from "../../state/bagReducer"
 import {getActiveCurrency, getCategoryData} from "../../selectors/selectors"
-import Preloader from "../../helpers/preloader";
+import Preloader from "../../helpers/preloader"
 
 class CategoriesContainer extends PureComponent {
     componentDidMount() {
@@ -24,11 +24,10 @@ class CategoriesContainer extends PureComponent {
     }
 
     render() {
-        if(!this.props.categoryData) return <Preloader/>
+        if (!this.props.categoryData) return <Preloader/>
         return <Category categoryData={this.props.categoryData}
                          addProduct={this.props.addProduct}
-                         activeCurrency={this.props.activeCurrency}
-        />
+                         activeCurrency={this.props.activeCurrency}/>
     }
 }
 

@@ -76,7 +76,7 @@
 .bagItem {
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    margin: 20px 0 20px 20px;
 }
 
 .counter {
@@ -150,4 +150,30 @@
 .bagItemsContainer {
     height: 370px;
     overflow: auto;
+}
+
+.cartButtonImgSize {
+    width: 25px;
+}
+
+.cartButton {
+    position: absolute;
+    cursor: pointer;
+    top: calc(50% - 20px / 2 - 16px);
+    right: 5vw;
+}
+
+.cartOverlayProducts {
+    margin: -38px 0 0 15px;
+    position: absolute;
+    background: #1D1F22;
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    color: #FFFFFF;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
 }

@@ -1,7 +1,6 @@
-import s from '../header.module.css'
+import s from './currency.module.css'
 
 const Currency = ({currencies, toggleCurrencyOpening, setActiveCurrency}) => {
-
     let getCurrencies = currencies.map(c => {
         return <div onClick={() => {
             toggleCurrencyOpening(false)

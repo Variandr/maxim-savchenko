@@ -6,7 +6,7 @@ import {compose} from "redux"
 import withRouter from "../../HOC/withRouter"
 import {addProduct} from "../../state/bagReducer"
 import {getActiveCurrency, getLoadingProduct, getProduct} from "../../selectors/selectors"
-import Preloader from "../../helpers/preloader";
+import Preloader from "../../helpers/preloader"
 
 class ProductContainer extends PureComponent {
     componentDidMount() {
@@ -27,9 +27,8 @@ class ProductContainer extends PureComponent {
             return <Preloader/>
         }
         return <Product product={this.props.product}
-                     addProduct={this.props.addProduct}
-                     activeCurrency={this.props.activeCurrency}
-            />
+                        addProduct={this.props.addProduct}
+                        activeCurrency={this.props.activeCurrency}/>
     }
 }
 

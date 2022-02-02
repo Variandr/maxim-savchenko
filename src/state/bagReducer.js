@@ -1,9 +1,16 @@
 import {productsAPI} from "../api/api"
+import {
+    deleteProductByUniqueId,
+    findProductInsideLocalStorage,
+    setProductCount,
+    setUniqueProductId
+} from '../helpers/storeHelpers'
 
 const ADD_PRODUCT = '/bag/SET_PRODUCT'
 const SET_PRODUCTS = '/bag/SET_PRODUCTS'
 const DELETE_PRODUCT = '/bag/DELETE_PRODUCT'
 const SET_COUNT = '/bag/SET_COUNT'
+
 let initialState = {
     products: []
 }
@@ -30,8 +37,9 @@ let BagReducer = (state = initialState, action) => {
     }
 }
 export default BagReducer
-const _addProduct = (uniqueItemId, id, chosenAttributes, productData, count) => ({
-    type: ADD_PRODUCT, payload: {uniqueItemId, id, chosenAttributes, productData, count}
+
+const _addProduct = (cart) => ({
+    type: ADD_PRODUCT, payload: {...cart}
 })
 const _setProducts = (products) => ({
     type: SET_PRODUCTS, products
@@ -39,6 +47,10 @@ const _setProducts = (products) => ({
 const _setCount = (count, uniqueItemId) => ({
     type: SET_COUNT, count, uniqueItemId
 })
+const _deleteProduct = (uniqueItemId) => ({
+    type: DELETE_PRODUCT, uniqueItemId
+})
+
 export const setProducts = () => dispatch => {
     let products = JSON.parse(localStorage.getItem('bag'))
     if (products) {
@@ -46,80 +58,35 @@ export const setProducts = () => dispatch => {
     }
 }
 export const setCount = (count, uniqueItemId) => (dispatch) => {
-    let products = JSON.parse(localStorage.getItem('bag'))
-    if (products) {
-        let isFound = false
-        products.map(p => {
-            if (p.uniqueItemId === uniqueItemId) {
-                isFound = true
-                return p
-            }
-            return p
-        })
-        if (isFound) {
-            products = products.map(p => {
-                if (p.uniqueItemId === uniqueItemId) {
-                    return {...p, count: count}
-                }
-                return p
-            })
-            localStorage.setItem('bag', JSON.stringify(products))
-            dispatch(_setCount(count, uniqueItemId))
-        } else console.log("Product doesn't found")
-    }
+    let data = findProductInsideLocalStorage(uniqueItemId)
+    if (data.isFound) {
+        let products = setProductCount(data.products, uniqueItemId, count)
+        localStorage.setItem('bag', JSON.stringify(products))
+        dispatch(_setCount(count, uniqueItemId))
+    } else console.log("Product wasn't found")
 }
 export const addProduct = (id, chosenAttributes, count = 1) => async (dispatch) => {
     let productData = await productsAPI.getProduct(id)
-    let uniqueItemId = id
-    if (chosenAttributes) {
-        uniqueItemId += chosenAttributes.map(a => {
-            return a.value
-        })
-    }
-    if (id === productData.id) {
-        let cart = {
-            uniqueItemId, id, chosenAttributes, productData, count
-        }
-        let products = JSON.parse(localStorage.getItem('bag'))
-        if (products) {
-            let isFound = false
-            products.map(p => {
-                if (p.uniqueItemId === uniqueItemId) {
-                    isFound = true
-                    return p
-                }
-                return p
-            })
-            if (!isFound) {
-                products.push(cart)
-                localStorage.setItem('bag', JSON.stringify(products))
-                dispatch(_addProduct(uniqueItemId, id, chosenAttributes, productData, count))
-            } else console.log("Product already exist inside cart")
-        } else {
-            localStorage.setItem('bag', JSON.stringify([cart]))
-            dispatch(_addProduct(uniqueItemId, id, chosenAttributes, productData, count))
-        }
+    let uniqueItemId = setUniqueProductId(id, chosenAttributes)
+    let cart = {uniqueItemId, id, chosenAttributes, productData, count}
+    let data = findProductInsideLocalStorage(uniqueItemId)
+    if (data.products) {
+        if (!data.isFound) {
+            data.products.push(cart)
+            localStorage.setItem('bag', JSON.stringify(data.products))
+            dispatch(_addProduct(cart))
+        } else console.log("Product already exist inside cart")
+    } else {
+        localStorage.setItem('bag', JSON.stringify([cart]))
+        dispatch(_addProduct(cart))
     }
 }
-const _deleteProduct = (uniqueItemId) => ({
-    type: DELETE_PRODUCT, uniqueItemId
-})
 
 export const deleteProduct = (uniqueItemId) => (dispatch) => {
-    let products = JSON.parse(localStorage.getItem('bag'))
-    if (products) {
-        let isFound = false
-        products.map(p => {
-            if (p.uniqueItemId === uniqueItemId) {
-                isFound = true
-                return p
-            }
-            return p
-        })
-        if (isFound) {
-            products = products.filter(p => p.uniqueItemId !== uniqueItemId)
-            localStorage.setItem('bag', JSON.stringify(products))
-            dispatch(_deleteProduct(uniqueItemId))
-        } else console.log("Product doesn't found")
-    }
+    let data = findProductInsideLocalStorage(uniqueItemId)
+    if (data.isFound) {
+        let products = deleteProductByUniqueId(data.products, uniqueItemId)
+        localStorage.setItem('bag', JSON.stringify(products))
+        dispatch(_deleteProduct(uniqueItemId))
+    } else console.log("Product wasn't found")
 }

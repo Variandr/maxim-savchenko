@@ -1,10 +1,11 @@
 import {currenciesAPI} from "../api/api"
 import {setProducts} from "./bagReducer"
-import {getCategories} from "./categoriesReducer";
+import {getCategories} from "./categoriesReducer"
 
 const SET_CURRENCIES = '/app/SET_CURRENCIES'
 const SET_ACTIVE_CURRENCY = '/app/SET_ACTIVE_CURRENCY'
 const INITIALIZED = '/app/INITIALIZED'
+
 let initialState = {
     currencies: [],
     isInitialized: false,
@@ -24,6 +25,7 @@ let AppReducer = (state = initialState, action) => {
     }
 }
 export default AppReducer
+
 const _setCurrencies = (currencies) => ({
     type: SET_CURRENCIES, currencies
 })
@@ -34,6 +36,7 @@ const _getCurrencies = () => async (dispatch) => {
 const _initializeSuccess = () => ({
     type: INITIALIZED
 })
+
 export const setActiveCurrency = (activeCurrency) => ({
     type: SET_ACTIVE_CURRENCY, activeCurrency
 })
