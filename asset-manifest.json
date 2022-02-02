@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/maxim-savchenko/static/css/main.b9f1b12a.css",
-    "main.js": "/maxim-savchenko/static/js/main.7c5081f3.js",
+    "main.css": "/maxim-savchenko/static/css/main.9ddfe5e3.css",
+    "main.js": "/maxim-savchenko/static/js/main.b38a7a7f.js",
     "static/media/logo.svg": "/maxim-savchenko/static/media/logo.19d5e15f649d0080d15bcb19a7111c85.svg",
     "static/media/cartBox.svg": "/maxim-savchenko/static/media/cartBox.0ce3a0697047a0255ffa862f98c907ba.svg",
     "static/media/cart.svg": "/maxim-savchenko/static/media/cart.167d63d807a6a56c0caf2061849dbb92.svg",
     "index.html": "/maxim-savchenko/index.html",
-    "static/media/leftArrow.svg": "/maxim-savchenko/static/media/leftArrow.d2e6c82354f043d0a9822865b2286da7.svg",
-    "static/media/rightArrow.svg": "/maxim-savchenko/static/media/rightArrow.d15bf43104b45bec3d09313434466513.svg",
+    "static/media/leftArrow.svg": "/maxim-savchenko/static/media/leftArrow.b696982e3fb4b95d74a0b96f2cee91df.svg",
+    "static/media/rightArrow.svg": "/maxim-savchenko/static/media/rightArrow.0cdb9beac3543245778f55a7cd8c2de1.svg",
     "static/media/downArrow.svg": "/maxim-savchenko/static/media/downArrow.6745176013df505b7827028cfd8262e3.svg",
     "static/media/upArrow.svg": "/maxim-savchenko/static/media/upArrow.22c7531e28498a3984fd2af581646771.svg",
-    "main.b9f1b12a.css.map": "/maxim-savchenko/static/css/main.b9f1b12a.css.map",
-    "main.7c5081f3.js.map": "/maxim-savchenko/static/js/main.7c5081f3.js.map"
+    "main.9ddfe5e3.css.map": "/maxim-savchenko/static/css/main.9ddfe5e3.css.map",
+    "main.b38a7a7f.js.map": "/maxim-savchenko/static/js/main.b38a7a7f.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9f1b12a.css",
-    "static/js/main.7c5081f3.js"
+    "static/css/main.9ddfe5e3.css",
+    "static/js/main.b38a7a7f.js"
   ]
 }
