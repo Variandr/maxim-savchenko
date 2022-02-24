@@ -1,7 +1,5 @@
 # Online Store(React+Redux)
 
-This is an entry React developer test for Scandiweb
-
 The project was deployed [HERE](https://variandr.github.io/maxim-savchenko)
 
 The app war created using:
