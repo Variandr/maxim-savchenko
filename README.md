@@ -1,4 +1,4 @@
-# Online Store(React+Redux)
+# Online Store
 
 The project was deployed [HERE](https://variandr.github.io/maxim-savchenko)
 
