@@ -1,6 +1,6 @@
 # Online Store
 
-The project was deployed [HERE](https://variandr.github.io/maxim-savchenko)
+The project was deployed [HERE](https://variandr.github.io/store)
 
 The app was created using:
 
