@@ -14,9 +14,9 @@ You can run this app on localhost using following steps:
 
 Front:
 
-1. Clone project `git clone https://github.com/Variandr/maxim-savchenko.git`
+1. Clone project `git clone https://github.com/Variandr/store.git`
 
-2. Install node modules to new directory `cd maxim-savchenko` -> `npm i`
+2. Install node modules to new directory `cd store` -> `npm i`
 
 3. Start app `npm start`
 
