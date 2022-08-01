@@ -1,25 +1,22 @@
 # Online Store
 
+This is my first test task. The task was to create a store by figma`s design with functional, such as:
+- Products page
+- Product description page
+- Cart overlay
+- Cart page
+- Currency overlay
+
 The project was deployed [HERE](https://variandr.github.io/store)
 
-The app was created using:
+Stack: ES6+, React, Redux, GraphQL
 
--React, react-router-dom v6
+## Local setup
 
--Redux, react-redux, redux-thunk
+1. `git clone https://github.com/Variandr/store.git`
 
--Apollo
+2. `yarn`
 
-You can run this app on localhost using following steps:
+3. `yarn start`
 
-Front:
-
-1. Clone project `git clone https://github.com/Variandr/store.git`
-
-2. Install node modules to new directory `cd store` -> `npm i`
-
-3. Start app `npm start`
-
-Backend:
-
-Go to [REPOSITORY](https://github.com/scandiweb/junior-react-endpoint) and follow instructions
+4. Open in the browser [localhost:3000](http://localhost:3000)
