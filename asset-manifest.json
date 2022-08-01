@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/maxim-savchenko/static/css/main.9ddfe5e3.css",
-    "main.js": "/maxim-savchenko/static/js/main.471bb3b5.js",
-    "static/media/logo.svg": "/maxim-savchenko/static/media/logo.19d5e15f649d0080d15bcb19a7111c85.svg",
-    "static/media/cartBox.svg": "/maxim-savchenko/static/media/cartBox.0ce3a0697047a0255ffa862f98c907ba.svg",
-    "static/media/cart.svg": "/maxim-savchenko/static/media/cart.167d63d807a6a56c0caf2061849dbb92.svg",
-    "index.html": "/maxim-savchenko/index.html",
-    "static/media/leftArrow.svg": "/maxim-savchenko/static/media/leftArrow.b696982e3fb4b95d74a0b96f2cee91df.svg",
-    "static/media/rightArrow.svg": "/maxim-savchenko/static/media/rightArrow.0cdb9beac3543245778f55a7cd8c2de1.svg",
-    "static/media/downArrow.svg": "/maxim-savchenko/static/media/downArrow.6745176013df505b7827028cfd8262e3.svg",
-    "static/media/upArrow.svg": "/maxim-savchenko/static/media/upArrow.22c7531e28498a3984fd2af581646771.svg",
-    "main.9ddfe5e3.css.map": "/maxim-savchenko/static/css/main.9ddfe5e3.css.map",
-    "main.471bb3b5.js.map": "/maxim-savchenko/static/js/main.471bb3b5.js.map"
+    "main.css": "/store/static/css/main.80641779.css",
+    "main.js": "/store/static/js/main.6280b367.js",
+    "static/media/logo.svg": "/store/static/media/logo.9242e2b5c01195879fed94e2d283dbdd.svg",
+    "static/media/cartBox.svg": "/store/static/media/cartBox.c80e16974b1959d59f68309f7b50ba2b.svg",
+    "static/media/cart.svg": "/store/static/media/cart.8ba3f47dfc77f10fc0f98a3a1a2755c3.svg",
+    "index.html": "/store/index.html",
+    "static/media/leftArrow.svg": "/store/static/media/leftArrow.c5096ec86cf23f666b55ab313f569aa2.svg",
+    "static/media/rightArrow.svg": "/store/static/media/rightArrow.d99efcf6ef0876a79cc8470e64b94869.svg",
+    "static/media/downArrow.svg": "/store/static/media/downArrow.e0891dac6eb8f64b3a08879ab30dbc5c.svg",
+    "static/media/upArrow.svg": "/store/static/media/upArrow.d59b5804f8acc3b61ef1881e76718735.svg",
+    "main.80641779.css.map": "/store/static/css/main.80641779.css.map",
+    "main.6280b367.js.map": "/store/static/js/main.6280b367.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ddfe5e3.css",
-    "static/js/main.471bb3b5.js"
+    "static/css/main.80641779.css",
+    "static/js/main.6280b367.js"
   ]
 }
