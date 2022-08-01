@@ -1,34 +1,34 @@
-import React, {PureComponent} from "react"
+import React, {useEffect} from "react"
 import {connect} from "react-redux"
 import {getProducts} from "../../state/categoriesReducer"
 import Category from "./category"
 import {compose} from "redux"
-import withRouter from "../../HOC/withRouter"
+import withRouter from "../../helpers/withRouter"
 import {addProduct} from "../../state/bagReducer"
 import {getActiveCurrency, getCategoryData} from "../../selectors/selectors"
 import Preloader from "../../helpers/preloader"
+import usePrevious from "../../helpers/usePrevious";
 
-class CategoriesContainer extends PureComponent {
-    componentDidMount() {
-        let categoryId = this.props.params.categoryId
-        this.props.getProducts(categoryId)
-        if (!categoryId) {
-            this.props.history.push('*')
+const CategoriesContainer = (props) => {
+    useEffect(() => {
+        props.getProducts(props.params.categoryId)
+        if (!props.params.categoryId) {
+            props.history.push('*')
         }
-    }
+    }, [])
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.params.categoryId !== prevProps.params.categoryId) {
-            this.props.getProducts(this.props.params.categoryId)
+    const prevProps = usePrevious(props.params.categoryId)
+    useEffect(() => {
+        if (props.params.categoryId !== prevProps) {
+            props.getProducts(props.params.categoryId)
         }
-    }
+    }, [prevProps, props.params.categoryId])
 
-    render() {
-        if (!this.props.categoryData) return <Preloader/>
-        return <Category categoryData={this.props.categoryData}
-                         addProduct={this.props.addProduct}
-                         activeCurrency={this.props.activeCurrency}/>
-    }
+    if (!props.categoryData) return <Preloader/>
+
+    return <Category categoryData={props.categoryData}
+                     addProduct={props.addProduct}
+                     activeCurrency={props.activeCurrency}/>
 }
 
 const mapStateToProps = (state) => ({

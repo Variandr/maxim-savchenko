@@ -1,19 +1,17 @@
-import React, {PureComponent} from "react"
+import React from "react"
 import {connect} from "react-redux"
 import CartOverlay from "./cartOverlay";
 import {deleteProduct, setCount} from "../../state/bagReducer"
 import {getActiveCurrency, getProducts} from "../../selectors/selectors"
 
-class CartOverlayContainer extends PureComponent {
-    render() {
-        return <CartOverlay products={this.props.products}
-                            toggleBagOpening={this.props.toggleBagOpening}
-                            activeCurrency={this.props.activeCurrency}
-                            deleteProduct={this.props.deleteProduct}
-                            setCount={this.props.setCount}
-                            productsLength={this.props.productsLength}
-        />
-    }
+const CartOverlayContainer = (props) => {
+    return <CartOverlay products={props.products}
+                        toggleBagOpening={props.toggleBagOpening}
+                        activeCurrency={props.activeCurrency}
+                        deleteProduct={props.deleteProduct}
+                        setCount={props.setCount}
+                        productsLength={props.productsLength}
+    />
 }
 
 const mapStateToProps = (state) => ({

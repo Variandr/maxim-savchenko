@@ -151,11 +151,13 @@
     background: black;
     color: white;
 }
-.galleryAndImgContainer{
+
+.galleryAndImgContainer {
     display: flex;
     justify-content: space-between;
 }
-.productDescriptionContainer{
+
+.productDescriptionContainer {
     margin: 0 10vw;
     width: 20vw;
 }

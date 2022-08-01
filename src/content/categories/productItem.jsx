@@ -6,11 +6,12 @@ import {getCurrentPrice} from "../../helpers/cartOverlayHelpers"
 import {getDefaultAttributes} from "../../helpers/categoryHelper"
 
 const ProductItem = ({id, name, brand, gallery, attributes, addProduct, activeCurrency, prices, inStock}) => {
-    let price = getCurrentPrice(prices, activeCurrency)
-    let chosenAttributes = getDefaultAttributes(attributes)
-    let inStockName = inStock ? s.name : s.outOfStockName
-    let inStockPrice = inStock ? s.price : s.outOfStockPrice
-    let AddToCartOnClick = () => addProduct(id, chosenAttributes)
+    const price = getCurrentPrice(prices, activeCurrency)
+    const chosenAttributes = getDefaultAttributes(attributes)
+    const inStockName = inStock ? s.name : s.outOfStockName
+    const inStockPrice = inStock ? s.price : s.outOfStockPrice
+    const AddToCartOnClick = () => addProduct(id, chosenAttributes)
+
     return <div className={s.productBody}>
         <NavLink className={s.navLink} to={'/product/' + id}>
             {!inStock &&

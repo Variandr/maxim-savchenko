@@ -1,19 +1,25 @@
-import React, {PureComponent} from "react"
+import React from "react"
 import {connect} from "react-redux"
 import Header from "./header"
 import {setActiveCurrency} from "../state/appReducer"
 import {getActiveCurrency, getCategories, getCurrencies, getProducts} from "../selectors/selectors"
 
-class HeaderContainer extends PureComponent {
-    render() {
-        return <Header products={this.props.products}
-                       toggleBagOpening={this.props.toggleBagOpening}
-                       isBagOpened={this.props.isBagOpened}
-                       currencies={this.props.currencies}
-                       setActiveCurrency={this.props.setActiveCurrency}
-                       activeCurrency={this.props.activeCurrency}
-                       categories={this.props.categories}/>
-    }
+const HeaderContainer = ({
+                             products,
+                             toggleBagOpening,
+                             isBagOpened,
+                             currencies,
+                             setActiveCurrency,
+                             activeCurrency,
+                             categories
+                         }) => {
+    return <Header products={products}
+                   toggleBagOpening={toggleBagOpening}
+                   isBagOpened={isBagOpened}
+                   currencies={currencies}
+                   setActiveCurrency={setActiveCurrency}
+                   activeCurrency={activeCurrency}
+                   categories={categories}/>
 }
 
 const mapStateToProps = (state) => ({

@@ -3,12 +3,12 @@ import {categoriesAPI} from "../api/api"
 const SET_CATEGORY_DATA = '/categories/SET_CATEGORY_DATA'
 const SET_CATEGORIES = '/categories/SET_CATEGORIES'
 
-let initialState = {
+const initialState = {
     categoryData: null,
     categories: []
 }
 
-let CategoriesReducer = (state = initialState, action) => {
+const CategoriesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CATEGORY_DATA:
             return {...state, categoryData: {name: action.name, products: action.products}}
@@ -28,10 +28,10 @@ const _setCategories = (categories) => ({
 })
 
 export const getProducts = (categoryId) => async (dispatch) => {
-    let category = await categoriesAPI.getCategoryData(categoryId)
+    const category = await categoriesAPI.getCategoryData(categoryId)
     dispatch(_setCategoryData(category.name, category.products))
 }
 export const getCategories = () => async (dispatch) => {
-    let categories = await categoriesAPI.getCategories()
+    const categories = await categoriesAPI.getCategories()
     dispatch(_setCategories(categories))
 }

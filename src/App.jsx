@@ -1,6 +1,6 @@
-import React, {PureComponent} from "react"
+import React, {useEffect, useState} from "react"
 import s from './App.module.css'
-import {Route, Routes, Navigate} from "react-router-dom"
+import {Navigate, Route, Routes} from "react-router-dom"
 import CategoriesContainer from "./content/categories/categoriesContainer"
 import ProductContainer from "./content/PDP/productContainer"
 import BagPageContainer from "./content/cartPage/cartPageContainer"
@@ -11,49 +11,35 @@ import Preloader from "./helpers/preloader"
 import {getCategories, getInitialize} from "./selectors/selectors"
 
 
-class App extends PureComponent {
-    componentDidMount() {
-        this.props.initializeApp()
-    }
+const App = (props) => {
+    useEffect(() => {
+        props.initializeApp()
 
-    state = {
-        isBagOpened: false
-    }
+    }, [])
 
-    constructor() {
-        super()
-        this.toggleBagOpening = this.toggleBagOpening.bind(this)
-    }
+    const [bagOpened, setBagOpened] = useState(false)
 
-    toggleBagOpening = (isBagOpened) => {
-        this.setState({
-            isBagOpened: isBagOpened
-        })
+    if (!props.isInitialized) {
+        return <Preloader/>
     }
+    const firstCategory = props.categories[0].name
+    const hideOverflow = bagOpened ? s.overflowHidden : ''
 
-    render() {
-        if (!this.props.isInitialized) {
-            return <Preloader/>
-        }
-        let firstCategory = this.props.categories[0].name
-        let hideOverflow = this.state.isBagOpened ? s.overflowHidden : ''
-
-        return <div className={s.app + ' ' + hideOverflow}>
-            <HeaderContainer
-                toggleBagOpening={this.toggleBagOpening}
-                isBagOpened={this.state.isBagOpened}/>
-            <Routes>
-                <Route path='/' element={<Navigate to={"/categories/" + firstCategory}/>}/>
-                <Route path='categories/:categoryId' element={<CategoriesContainer/>}/>
-                <Route path='product/:productId' element={<ProductContainer/>}/>
-                <Route path='/basket' element={<BagPageContainer/>}/>
-                <Route path='*' element={<div className={s.error}><h1>404 Page not found</h1></div>}/>
-            </Routes>
-        </div>
-    }
+    return <div className={s.app + ' ' + hideOverflow}>
+        <HeaderContainer
+            toggleBagOpening={(value) => setBagOpened(value)}
+            isBagOpened={bagOpened}/>
+        <Routes>
+            <Route path='/' element={<Navigate to={"/categories/" + firstCategory}/>}/>
+            <Route path='categories/:categoryId' element={<CategoriesContainer/>}/>
+            <Route path='product/:productId' element={<ProductContainer/>}/>
+            <Route path='/basket' element={<BagPageContainer/>}/>
+            <Route path='*' element={<div className={s.error}><h1>404 Page not found</h1></div>}/>
+        </Routes>
+    </div>
 }
 
-let mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
     isInitialized: getInitialize(state),
     categories: getCategories(state)
 })

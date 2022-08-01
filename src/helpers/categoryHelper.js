@@ -1,12 +1,14 @@
 export const sortProductsByName = (products) => {
-    let tempProducts = [...products]
+    const tempProducts = [...products]
     return tempProducts.sort((a, b) => {
         return ('' + a.name).localeCompare(b.name);
     })
 }
-export const ToUpperLetterString = (str) => {
+
+export const toUpperLetterString = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
 export const getDefaultAttributes = (attributes) => {
     let chosenAttributes = []
     attributes.map(a => {

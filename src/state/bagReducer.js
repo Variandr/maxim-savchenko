@@ -11,11 +11,11 @@ const SET_PRODUCTS = '/bag/SET_PRODUCTS'
 const DELETE_PRODUCT = '/bag/DELETE_PRODUCT'
 const SET_COUNT = '/bag/SET_COUNT'
 
-let initialState = {
+const initialState = {
     products: []
 }
 
-let BagReducer = (state = initialState, action) => {
+const BagReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PRODUCTS:
             return {...state, products: action.products}

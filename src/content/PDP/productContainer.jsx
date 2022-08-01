@@ -1,35 +1,37 @@
-import React, {PureComponent} from "react"
+import React, {useEffect} from "react"
 import {connect} from "react-redux"
 import {getProductData} from "../../state/productReducer"
 import Product from "./product"
 import {compose} from "redux"
-import withRouter from "../../HOC/withRouter"
+import withRouter from "../../helpers/withRouter"
 import {addProduct} from "../../state/bagReducer"
 import {getActiveCurrency, getLoadingProduct, getProduct} from "../../selectors/selectors"
 import Preloader from "../../helpers/preloader"
+import usePrevious from "../../helpers/usePrevious";
 
-class ProductContainer extends PureComponent {
-    componentDidMount() {
-        this.props.getProductData(this.props.params.productId)
-        if (!this.props.params.productId) {
-            this.props.history.push('*')
+const ProductContainer = (props) => {
+    useEffect(() => {
+        props.getProductData(props.params.productId)
+        if (!props.params.productId) {
+            props.history.push('*')
         }
+    }, [])
+
+    const prevProps = usePrevious(props.params.productId)
+    useEffect(() => {
+            if (props.params.productId !== prevProps) {
+                props.getProductData(props.params.productId)
+            }
+        }, [prevProps, props.params.productId]
+    )
+
+    if (props.isLoading || !props.product) {
+        return <Preloader/>
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.params.productId !== prevProps.params.productId) {
-            this.props.getProductData(this.props.params.productId)
-        }
-    }
-
-    render() {
-        if (this.props.isLoading || !this.props.product) {
-            return <Preloader/>
-        }
-        return <Product product={this.props.product}
-                        addProduct={this.props.addProduct}
-                        activeCurrency={this.props.activeCurrency}/>
-    }
+    return <Product product={props.product}
+                    addProduct={props.addProduct}
+                    activeCurrency={props.activeCurrency}/>
 }
 
 const mapStateToProps = (state) => ({

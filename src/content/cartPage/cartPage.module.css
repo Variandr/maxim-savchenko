@@ -37,11 +37,13 @@
     width: 141px;
     height: 185px;
 }
-.cartImg{
+
+.cartImg {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
 .counter {
     cursor: pointer;
     width: 45px;
@@ -84,12 +86,14 @@
 .imgAndCounterContainer {
     display: flex;
 }
-.leftArrowBtn, .rightArrowBtn{
+
+.leftArrowBtn, .rightArrowBtn {
     cursor: pointer;
     position: absolute;
     padding: 10px;
     margin-top: 70px;
 }
-.rightArrowBtn{
+
+.rightArrowBtn {
     margin-left: 110px;
 }

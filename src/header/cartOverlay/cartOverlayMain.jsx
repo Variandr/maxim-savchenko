@@ -5,11 +5,10 @@ import React from "react"
 import {ProductsCounter} from "../../helpers/headerHelpers"
 
 const CartOverlayMain = ({products, toggleBagOpening, isBagOpened}) => {
-    let productsLength = ProductsCounter(products)
-    let CloseCartOverlayOnBlur = () => setTimeout(() => toggleBagOpening(false), 200)
-    let toggleCartOverlayOnClick = () => toggleBagOpening(!isBagOpened)
-    return <div tabIndex="0" onBlur={CloseCartOverlayOnBlur}>
-        <div className={s.cartButton} onClick={toggleCartOverlayOnClick}>
+    const productsLength = ProductsCounter(products)
+
+    return <div tabIndex="0" onBlur={() => setTimeout(() => toggleBagOpening(false), 200)}>
+        <div className={s.cartButton} onClick={() => toggleBagOpening(!isBagOpened)}>
             <img className={s.cartButtonImgSize} src={bag} alt='bag'/>
             {productsLength > 0 &&
                 <div className={s.cartOverlayProducts}>{productsLength}</div>

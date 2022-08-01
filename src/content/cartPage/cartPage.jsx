@@ -2,7 +2,7 @@ import CartPageItem from "./cartPageItem"
 import s from './cartPage.module.css'
 
 const CartPage = ({products, activeCurrency, deleteProduct, setCount}) => {
-    let bagItems = products.map(p => {
+    const bagItems = products.map(p => {
         return <CartPageItem key={p.id} {...p}
                              chosenAttributes={p.chosenAttributes}
                              activeCurrency={activeCurrency}
